@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/anivanovle/users_proto/gen/users;users";
+
+service UsersOrderManagement{
+    rpc CreateOrder(CreateOrderRequest)returns(CreateOrderResponse);
+    rpc Order(OrderRequest)returns(OrderResponse);
+    rpc CancelOrder(CancelOrderRequest)returns(CancelOrderResponse);
+    rpc OrderHistory(OrderHistoryRequest)returns(OrderHistoryResponse);
+    rpc Rate(RateRequest)returns(RateResponse);
+
+}
+
+message Driver{
+    string id = 1;
+    string name = 2;
+}
+
+message OrderRequest{
+    string orderId = 1;
+}
+
+message OrderResponse{
+    string id = 1;
+    string from = 2;
+    string to = 3;
+    string type = 4;
+    Driver driver = 5;
+    string status = 6;
+    float userRate = 7;
+    float cost = 8;
+
+}
+
+message CreateOrderRequest{
+    string from = 1;
+    string to = 2;
+    string userId = 3;
+    string type = 4;
+}
+
+message CreateOrderResponse{
+    string id = 1;
+}
+
+message CancelOrderRequest{
+    string id = 1;
+}
+
+message CancelOrderResponse{
+    string id = 1;
+}
+
+message OrderHistoryRequest{
+    string userId = 1; 
+}
+
+message OrderHistoryResponse{
+    repeated OrderRequest orders = 1; 
+}
+
+message RateRequest{
+    string userId = 1;
+}
+
+message RateResponse{
+    float rate = 1;
+}

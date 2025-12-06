@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package drivers;
+
+option go_package = "github.com/anivanovle/users_proto/gen/drivers;drivers";
+
+service DriversOrderManagement{
+    rpc Order(OrderRequest)returns(OrderResponse);
+    rpc AssignOrder(AssignOrderRequest)returns(AssignOrderResponse);
+    rpc CancelOrder(CancelOrderRequest)returns(CancelOrderResponse);
+    rpc CompleteOrder(CompleteOrderRequest)returns(CompleteOrderResponse);
+}
+
+message User{
+    string id = 1;
+    string name = 2;
+}
+
+message OrderRequest{
+    string orderId = 1;
+}
+
+message OrderResponse{
+    string id = 1;
+    string from = 2;
+    string to = 3;
+    string type = 4;
+    User user = 5;
+    string status = 6;
+    float cost = 7;
+    float income = 8;
+
+}
+
+message AssignOrderRequest{
+    string id = 1;
+}
+
+message AssignOrderResponse{
+    string id = 1;
+}
+
+message AssignCancelRequest{
+    string id = 1;
+}
+
+message CancelOrderRequest{
+    string id = 1;
+}
+
+message CancelOrderResponse{
+    string id = 1;
+}
+
+message CompleteOrderRequest{
+    string id = 1; 
+}
+
+message CompleteOrderResponse{
+    string id = 1;
+}
