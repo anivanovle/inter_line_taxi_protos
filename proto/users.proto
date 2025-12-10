@@ -5,33 +5,17 @@ package users;
 option go_package = "github.com/anivanovle/users_proto/gen/users;users";
 
 service UsersOrderManagement{
-    rpc CreateOrder(CreateOrderRequest)returns(CreateOrderResponse);
+    rpc CreateOrder(CancelOrderRequest)returns(CreateOrderResponse);
     rpc Order(OrderRequest)returns(OrderResponse);
     rpc CancelOrder(CancelOrderRequest)returns(CancelOrderResponse);
     rpc OrderHistory(OrderHistoryRequest)returns(OrderHistoryResponse);
-    rpc Rate(RateRequest)returns(RateResponse);
+    rpc Rate(RateByUserRequest)returns(RateByUserResponse);
 
 }
 
-message Driver{
-    string id = 1;
-    string name = 2;
-}
-
-message OrderRequest{
-    string orderId = 1;
-}
-
-message OrderResponse{
-    string id = 1;
-    string from = 2;
-    string to = 3;
-    string type = 4;
-    Driver driver = 5;
-    string status = 6;
-    float userRate = 7;
-    float cost = 8;
-
+message Error{
+    string code = 1;
+    string message = 2;
 }
 
 message CreateOrderRequest{
@@ -39,35 +23,136 @@ message CreateOrderRequest{
     string to = 2;
     string userId = 3;
     string type = 4;
-    int64 distance = 5;
-    int64 duration_Min = 6; // время в минутах
-
 }
+
 
 message CreateOrderResponse{
-    string id = 1;
+
+    oneof result{
+       SuccessCreateOrder SuccessCreateOrder = 1;
+       Error error = 2;
+
+    }
 }
 
-message CancelOrderRequest{
+message SuccessCreateOrder{
     string id = 1;
+    string from = 2;
+    string to = 3;
+    string type = 4;
+    string cost = 5;
+    string distance = 6;
+    string time = 7;
+    string status = 8;
+}
+
+
+
+
+
+message Driver{
+    string id = 1;
+    string name = 2;
+    string phone = 3;
+    string driverComment = 4;
+    float DriverRate = 5;
+}
+
+message User{
+    string id = 1;
+    string name = 2;
+    string phone = 3;
+    string userComment = 4;
+    float userRate = 5;
+}
+
+message CancelParams{
+    int64 canceled = 1;
+    string cancelByRole = 2;
+
+}
+
+message OrderRequest{
+    string orderId = 1;
+}
+
+
+
+message OrderResponse{
+    oneof result{
+       OrderResponseSuccess SuccessCreateOrder = 1;
+       Error error = 2;
+
+    }
+}
+
+
+message OrderResponseSuccess{
+    string id = 1;
+    string from = 2;
+    string to = 3;
+    string type = 4;
+    string cost = 5;
+    string distance = 6;
+    string time = 7;
+    string status = 8;
+    int64 started = 9;
+    int64 finished = 10;
+    User user = 11;
+    Driver driver = 12;
+    CancelParams CancelParams = 13;
+
+}
+
+
+
+
+
+
+message CancelOrderRequest{
+    string orderId = 1;
 }
 
 message CancelOrderResponse{
-    string id = 1;
+    oneof result{
+       CancelOrderResponseSuccess CancelOrderResponseSuccess = 1;
+       Error error = 2;
+
+    }
 }
+
+message CancelOrderResponseSuccess{
+    int64 canceled = 1;
+}
+
+
+
+
 
 message OrderHistoryRequest{
     string userId = 1; 
 }
 
 message OrderHistoryResponse{
-    repeated OrderRequest orders = 1; 
+    oneof result{
+       OrderHistoryResponseSuccess OrderHistoryResponseSuccess = 1;
+       Error error = 2;
+
+    }
 }
 
-message RateRequest{
-    string userId = 1;
+message OrderHistoryResponseSuccess{
+    repeated OrderResponseSuccess orders = 1; 
 }
 
-message RateResponse{
-    float rate = 1;
+
+
+
+message RateByUserRequest{
+    string OrderId = 1;
+    string Comment = 2;
+}
+
+message RateByUserResponse{
+    Error error = 2;
 }

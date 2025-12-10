@@ -21,28 +21,28 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Driver struct {
+type Error struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Driver) Reset() {
-	*x = Driver{}
+func (x *Error) Reset() {
+	*x = Error{}
 	mi := &file_users_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Driver) String() string {
+func (x *Error) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Driver) ProtoMessage() {}
+func (*Error) ProtoMessage() {}
 
-func (x *Driver) ProtoReflect() protoreflect.Message {
+func (x *Error) ProtoReflect() protoreflect.Message {
 	mi := &file_users_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -54,167 +54,23 @@ func (x *Driver) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Driver.ProtoReflect.Descriptor instead.
-func (*Driver) Descriptor() ([]byte, []int) {
+// Deprecated: Use Error.ProtoReflect.Descriptor instead.
+func (*Error) Descriptor() ([]byte, []int) {
 	return file_users_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Driver) GetId() string {
+func (x *Error) GetCode() string {
 	if x != nil {
-		return x.Id
+		return x.Code
 	}
 	return ""
 }
 
-func (x *Driver) GetName() string {
+func (x *Error) GetMessage() string {
 	if x != nil {
-		return x.Name
+		return x.Message
 	}
 	return ""
-}
-
-type OrderRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	OrderId       string                 `protobuf:"bytes,1,opt,name=orderId,proto3" json:"orderId,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *OrderRequest) Reset() {
-	*x = OrderRequest{}
-	mi := &file_users_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *OrderRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*OrderRequest) ProtoMessage() {}
-
-func (x *OrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use OrderRequest.ProtoReflect.Descriptor instead.
-func (*OrderRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *OrderRequest) GetOrderId() string {
-	if x != nil {
-		return x.OrderId
-	}
-	return ""
-}
-
-type OrderResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
-	To            string                 `protobuf:"bytes,3,opt,name=to,proto3" json:"to,omitempty"`
-	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	Driver        *Driver                `protobuf:"bytes,5,opt,name=driver,proto3" json:"driver,omitempty"`
-	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
-	UserRate      float32                `protobuf:"fixed32,7,opt,name=userRate,proto3" json:"userRate,omitempty"`
-	Cost          float32                `protobuf:"fixed32,8,opt,name=cost,proto3" json:"cost,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *OrderResponse) Reset() {
-	*x = OrderResponse{}
-	mi := &file_users_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *OrderResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*OrderResponse) ProtoMessage() {}
-
-func (x *OrderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use OrderResponse.ProtoReflect.Descriptor instead.
-func (*OrderResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *OrderResponse) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *OrderResponse) GetFrom() string {
-	if x != nil {
-		return x.From
-	}
-	return ""
-}
-
-func (x *OrderResponse) GetTo() string {
-	if x != nil {
-		return x.To
-	}
-	return ""
-}
-
-func (x *OrderResponse) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-func (x *OrderResponse) GetDriver() *Driver {
-	if x != nil {
-		return x.Driver
-	}
-	return nil
-}
-
-func (x *OrderResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *OrderResponse) GetUserRate() float32 {
-	if x != nil {
-		return x.UserRate
-	}
-	return 0
-}
-
-func (x *OrderResponse) GetCost() float32 {
-	if x != nil {
-		return x.Cost
-	}
-	return 0
 }
 
 type CreateOrderRequest struct {
@@ -223,15 +79,13 @@ type CreateOrderRequest struct {
 	To            string                 `protobuf:"bytes,2,opt,name=to,proto3" json:"to,omitempty"`
 	UserId        string                 `protobuf:"bytes,3,opt,name=userId,proto3" json:"userId,omitempty"`
 	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	Distance      int64                  `protobuf:"varint,5,opt,name=distance,proto3" json:"distance,omitempty"`
-	Duration_Min  int64                  `protobuf:"varint,6,opt,name=duration_Min,json=durationMin,proto3" json:"duration_Min,omitempty"` // время в минутах
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateOrderRequest) Reset() {
 	*x = CreateOrderRequest{}
-	mi := &file_users_proto_msgTypes[3]
+	mi := &file_users_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -243,7 +97,7 @@ func (x *CreateOrderRequest) String() string {
 func (*CreateOrderRequest) ProtoMessage() {}
 
 func (x *CreateOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[3]
+	mi := &file_users_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -256,7 +110,7 @@ func (x *CreateOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrderRequest.ProtoReflect.Descriptor instead.
 func (*CreateOrderRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{3}
+	return file_users_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateOrderRequest) GetFrom() string {
@@ -287,30 +141,20 @@ func (x *CreateOrderRequest) GetType() string {
 	return ""
 }
 
-func (x *CreateOrderRequest) GetDistance() int64 {
-	if x != nil {
-		return x.Distance
-	}
-	return 0
-}
-
-func (x *CreateOrderRequest) GetDuration_Min() int64 {
-	if x != nil {
-		return x.Duration_Min
-	}
-	return 0
-}
-
 type CreateOrderResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Result:
+	//
+	//	*CreateOrderResponse_SuccessCreateOrder
+	//	*CreateOrderResponse_Error
+	Result        isCreateOrderResponse_Result `protobuf_oneof:"result"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateOrderResponse) Reset() {
 	*x = CreateOrderResponse{}
-	mi := &file_users_proto_msgTypes[4]
+	mi := &file_users_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -322,7 +166,7 @@ func (x *CreateOrderResponse) String() string {
 func (*CreateOrderResponse) ProtoMessage() {}
 
 func (x *CreateOrderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[4]
+	mi := &file_users_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -335,26 +179,630 @@ func (x *CreateOrderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrderResponse.ProtoReflect.Descriptor instead.
 func (*CreateOrderResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{4}
+	return file_users_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CreateOrderResponse) GetId() string {
+func (x *CreateOrderResponse) GetResult() isCreateOrderResponse_Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+func (x *CreateOrderResponse) GetSuccessCreateOrder() *SuccessCreateOrder {
+	if x != nil {
+		if x, ok := x.Result.(*CreateOrderResponse_SuccessCreateOrder); ok {
+			return x.SuccessCreateOrder
+		}
+	}
+	return nil
+}
+
+func (x *CreateOrderResponse) GetError() *Error {
+	if x != nil {
+		if x, ok := x.Result.(*CreateOrderResponse_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+type isCreateOrderResponse_Result interface {
+	isCreateOrderResponse_Result()
+}
+
+type CreateOrderResponse_SuccessCreateOrder struct {
+	SuccessCreateOrder *SuccessCreateOrder `protobuf:"bytes,1,opt,name=SuccessCreateOrder,proto3,oneof"`
+}
+
+type CreateOrderResponse_Error struct {
+	Error *Error `protobuf:"bytes,2,opt,name=error,proto3,oneof"`
+}
+
+func (*CreateOrderResponse_SuccessCreateOrder) isCreateOrderResponse_Result() {}
+
+func (*CreateOrderResponse_Error) isCreateOrderResponse_Result() {}
+
+type SuccessCreateOrder struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
+	To            string                 `protobuf:"bytes,3,opt,name=to,proto3" json:"to,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	Cost          string                 `protobuf:"bytes,5,opt,name=cost,proto3" json:"cost,omitempty"`
+	Distance      string                 `protobuf:"bytes,6,opt,name=distance,proto3" json:"distance,omitempty"`
+	Time          string                 `protobuf:"bytes,7,opt,name=time,proto3" json:"time,omitempty"`
+	Status        string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SuccessCreateOrder) Reset() {
+	*x = SuccessCreateOrder{}
+	mi := &file_users_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SuccessCreateOrder) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SuccessCreateOrder) ProtoMessage() {}
+
+func (x *SuccessCreateOrder) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SuccessCreateOrder.ProtoReflect.Descriptor instead.
+func (*SuccessCreateOrder) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SuccessCreateOrder) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-type CancelOrderRequest struct {
+func (x *SuccessCreateOrder) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *SuccessCreateOrder) GetTo() string {
+	if x != nil {
+		return x.To
+	}
+	return ""
+}
+
+func (x *SuccessCreateOrder) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *SuccessCreateOrder) GetCost() string {
+	if x != nil {
+		return x.Cost
+	}
+	return ""
+}
+
+func (x *SuccessCreateOrder) GetDistance() string {
+	if x != nil {
+		return x.Distance
+	}
+	return ""
+}
+
+func (x *SuccessCreateOrder) GetTime() string {
+	if x != nil {
+		return x.Time
+	}
+	return ""
+}
+
+func (x *SuccessCreateOrder) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type Driver struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	DriverComment string                 `protobuf:"bytes,4,opt,name=driverComment,proto3" json:"driverComment,omitempty"`
+	DriverRate    float32                `protobuf:"fixed32,5,opt,name=DriverRate,proto3" json:"DriverRate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Driver) Reset() {
+	*x = Driver{}
+	mi := &file_users_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Driver) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Driver) ProtoMessage() {}
+
+func (x *Driver) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Driver.ProtoReflect.Descriptor instead.
+func (*Driver) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Driver) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Driver) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Driver) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *Driver) GetDriverComment() string {
+	if x != nil {
+		return x.DriverComment
+	}
+	return ""
+}
+
+func (x *Driver) GetDriverRate() float32 {
+	if x != nil {
+		return x.DriverRate
+	}
+	return 0
+}
+
+type User struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	UserComment   string                 `protobuf:"bytes,4,opt,name=userComment,proto3" json:"userComment,omitempty"`
+	UserRate      float32                `protobuf:"fixed32,5,opt,name=userRate,proto3" json:"userRate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *User) Reset() {
+	*x = User{}
+	mi := &file_users_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *User) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*User) ProtoMessage() {}
+
+func (x *User) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use User.ProtoReflect.Descriptor instead.
+func (*User) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *User) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *User) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *User) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *User) GetUserComment() string {
+	if x != nil {
+		return x.UserComment
+	}
+	return ""
+}
+
+func (x *User) GetUserRate() float32 {
+	if x != nil {
+		return x.UserRate
+	}
+	return 0
+}
+
+type CancelParams struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Canceled      int64                  `protobuf:"varint,1,opt,name=canceled,proto3" json:"canceled,omitempty"`
+	CancelByRole  string                 `protobuf:"bytes,2,opt,name=cancelByRole,proto3" json:"cancelByRole,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelParams) Reset() {
+	*x = CancelParams{}
+	mi := &file_users_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelParams) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelParams) ProtoMessage() {}
+
+func (x *CancelParams) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelParams.ProtoReflect.Descriptor instead.
+func (*CancelParams) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CancelParams) GetCanceled() int64 {
+	if x != nil {
+		return x.Canceled
+	}
+	return 0
+}
+
+func (x *CancelParams) GetCancelByRole() string {
+	if x != nil {
+		return x.CancelByRole
+	}
+	return ""
+}
+
+type OrderRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OrderId       string                 `protobuf:"bytes,1,opt,name=orderId,proto3" json:"orderId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrderRequest) Reset() {
+	*x = OrderRequest{}
+	mi := &file_users_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderRequest) ProtoMessage() {}
+
+func (x *OrderRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderRequest.ProtoReflect.Descriptor instead.
+func (*OrderRequest) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *OrderRequest) GetOrderId() string {
+	if x != nil {
+		return x.OrderId
+	}
+	return ""
+}
+
+type OrderResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Result:
+	//
+	//	*OrderResponse_SuccessCreateOrder
+	//	*OrderResponse_Error
+	Result        isOrderResponse_Result `protobuf_oneof:"result"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrderResponse) Reset() {
+	*x = OrderResponse{}
+	mi := &file_users_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderResponse) ProtoMessage() {}
+
+func (x *OrderResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderResponse.ProtoReflect.Descriptor instead.
+func (*OrderResponse) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *OrderResponse) GetResult() isOrderResponse_Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+func (x *OrderResponse) GetSuccessCreateOrder() *OrderResponseSuccess {
+	if x != nil {
+		if x, ok := x.Result.(*OrderResponse_SuccessCreateOrder); ok {
+			return x.SuccessCreateOrder
+		}
+	}
+	return nil
+}
+
+func (x *OrderResponse) GetError() *Error {
+	if x != nil {
+		if x, ok := x.Result.(*OrderResponse_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+type isOrderResponse_Result interface {
+	isOrderResponse_Result()
+}
+
+type OrderResponse_SuccessCreateOrder struct {
+	SuccessCreateOrder *OrderResponseSuccess `protobuf:"bytes,1,opt,name=SuccessCreateOrder,proto3,oneof"`
+}
+
+type OrderResponse_Error struct {
+	Error *Error `protobuf:"bytes,2,opt,name=error,proto3,oneof"`
+}
+
+func (*OrderResponse_SuccessCreateOrder) isOrderResponse_Result() {}
+
+func (*OrderResponse_Error) isOrderResponse_Result() {}
+
+type OrderResponseSuccess struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`
+	To            string                 `protobuf:"bytes,3,opt,name=to,proto3" json:"to,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	Cost          string                 `protobuf:"bytes,5,opt,name=cost,proto3" json:"cost,omitempty"`
+	Distance      string                 `protobuf:"bytes,6,opt,name=distance,proto3" json:"distance,omitempty"`
+	Time          string                 `protobuf:"bytes,7,opt,name=time,proto3" json:"time,omitempty"`
+	Status        string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	Started       int64                  `protobuf:"varint,9,opt,name=started,proto3" json:"started,omitempty"`
+	Finished      int64                  `protobuf:"varint,10,opt,name=finished,proto3" json:"finished,omitempty"`
+	User          *User                  `protobuf:"bytes,11,opt,name=user,proto3" json:"user,omitempty"`
+	Driver        *Driver                `protobuf:"bytes,12,opt,name=driver,proto3" json:"driver,omitempty"`
+	CancelParams  *CancelParams          `protobuf:"bytes,13,opt,name=CancelParams,proto3" json:"CancelParams,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrderResponseSuccess) Reset() {
+	*x = OrderResponseSuccess{}
+	mi := &file_users_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderResponseSuccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderResponseSuccess) ProtoMessage() {}
+
+func (x *OrderResponseSuccess) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderResponseSuccess.ProtoReflect.Descriptor instead.
+func (*OrderResponseSuccess) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *OrderResponseSuccess) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetTo() string {
+	if x != nil {
+		return x.To
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetCost() string {
+	if x != nil {
+		return x.Cost
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetDistance() string {
+	if x != nil {
+		return x.Distance
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetTime() string {
+	if x != nil {
+		return x.Time
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *OrderResponseSuccess) GetStarted() int64 {
+	if x != nil {
+		return x.Started
+	}
+	return 0
+}
+
+func (x *OrderResponseSuccess) GetFinished() int64 {
+	if x != nil {
+		return x.Finished
+	}
+	return 0
+}
+
+func (x *OrderResponseSuccess) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+func (x *OrderResponseSuccess) GetDriver() *Driver {
+	if x != nil {
+		return x.Driver
+	}
+	return nil
+}
+
+func (x *OrderResponseSuccess) GetCancelParams() *CancelParams {
+	if x != nil {
+		return x.CancelParams
+	}
+	return nil
+}
+
+type CancelOrderRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OrderId       string                 `protobuf:"bytes,1,opt,name=orderId,proto3" json:"orderId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CancelOrderRequest) Reset() {
 	*x = CancelOrderRequest{}
-	mi := &file_users_proto_msgTypes[5]
+	mi := &file_users_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -366,7 +814,7 @@ func (x *CancelOrderRequest) String() string {
 func (*CancelOrderRequest) ProtoMessage() {}
 
 func (x *CancelOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[5]
+	mi := &file_users_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -379,26 +827,30 @@ func (x *CancelOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelOrderRequest.ProtoReflect.Descriptor instead.
 func (*CancelOrderRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{5}
+	return file_users_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *CancelOrderRequest) GetId() string {
+func (x *CancelOrderRequest) GetOrderId() string {
 	if x != nil {
-		return x.Id
+		return x.OrderId
 	}
 	return ""
 }
 
 type CancelOrderResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Result:
+	//
+	//	*CancelOrderResponse_CancelOrderResponseSuccess
+	//	*CancelOrderResponse_Error
+	Result        isCancelOrderResponse_Result `protobuf_oneof:"result"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CancelOrderResponse) Reset() {
 	*x = CancelOrderResponse{}
-	mi := &file_users_proto_msgTypes[6]
+	mi := &file_users_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -410,7 +862,7 @@ func (x *CancelOrderResponse) String() string {
 func (*CancelOrderResponse) ProtoMessage() {}
 
 func (x *CancelOrderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[6]
+	mi := &file_users_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -423,14 +875,92 @@ func (x *CancelOrderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelOrderResponse.ProtoReflect.Descriptor instead.
 func (*CancelOrderResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{6}
+	return file_users_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *CancelOrderResponse) GetId() string {
+func (x *CancelOrderResponse) GetResult() isCancelOrderResponse_Result {
 	if x != nil {
-		return x.Id
+		return x.Result
 	}
-	return ""
+	return nil
+}
+
+func (x *CancelOrderResponse) GetCancelOrderResponseSuccess() *CancelOrderResponseSuccess {
+	if x != nil {
+		if x, ok := x.Result.(*CancelOrderResponse_CancelOrderResponseSuccess); ok {
+			return x.CancelOrderResponseSuccess
+		}
+	}
+	return nil
+}
+
+func (x *CancelOrderResponse) GetError() *Error {
+	if x != nil {
+		if x, ok := x.Result.(*CancelOrderResponse_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+type isCancelOrderResponse_Result interface {
+	isCancelOrderResponse_Result()
+}
+
+type CancelOrderResponse_CancelOrderResponseSuccess struct {
+	CancelOrderResponseSuccess *CancelOrderResponseSuccess `protobuf:"bytes,1,opt,name=CancelOrderResponseSuccess,proto3,oneof"`
+}
+
+type CancelOrderResponse_Error struct {
+	Error *Error `protobuf:"bytes,2,opt,name=error,proto3,oneof"`
+}
+
+func (*CancelOrderResponse_CancelOrderResponseSuccess) isCancelOrderResponse_Result() {}
+
+func (*CancelOrderResponse_Error) isCancelOrderResponse_Result() {}
+
+type CancelOrderResponseSuccess struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Canceled      int64                  `protobuf:"varint,1,opt,name=canceled,proto3" json:"canceled,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelOrderResponseSuccess) Reset() {
+	*x = CancelOrderResponseSuccess{}
+	mi := &file_users_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelOrderResponseSuccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelOrderResponseSuccess) ProtoMessage() {}
+
+func (x *CancelOrderResponseSuccess) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelOrderResponseSuccess.ProtoReflect.Descriptor instead.
+func (*CancelOrderResponseSuccess) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CancelOrderResponseSuccess) GetCanceled() int64 {
+	if x != nil {
+		return x.Canceled
+	}
+	return 0
 }
 
 type OrderHistoryRequest struct {
@@ -442,7 +972,7 @@ type OrderHistoryRequest struct {
 
 func (x *OrderHistoryRequest) Reset() {
 	*x = OrderHistoryRequest{}
-	mi := &file_users_proto_msgTypes[7]
+	mi := &file_users_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -454,7 +984,7 @@ func (x *OrderHistoryRequest) String() string {
 func (*OrderHistoryRequest) ProtoMessage() {}
 
 func (x *OrderHistoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[7]
+	mi := &file_users_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -467,7 +997,7 @@ func (x *OrderHistoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderHistoryRequest.ProtoReflect.Descriptor instead.
 func (*OrderHistoryRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{7}
+	return file_users_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *OrderHistoryRequest) GetUserId() string {
@@ -478,15 +1008,19 @@ func (x *OrderHistoryRequest) GetUserId() string {
 }
 
 type OrderHistoryResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Orders        []*OrderRequest        `protobuf:"bytes,1,rep,name=orders,proto3" json:"orders,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Result:
+	//
+	//	*OrderHistoryResponse_OrderHistoryResponseSuccess
+	//	*OrderHistoryResponse_Error
+	Result        isOrderHistoryResponse_Result `protobuf_oneof:"result"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *OrderHistoryResponse) Reset() {
 	*x = OrderHistoryResponse{}
-	mi := &file_users_proto_msgTypes[8]
+	mi := &file_users_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -498,7 +1032,7 @@ func (x *OrderHistoryResponse) String() string {
 func (*OrderHistoryResponse) ProtoMessage() {}
 
 func (x *OrderHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[8]
+	mi := &file_users_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -511,38 +1045,117 @@ func (x *OrderHistoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderHistoryResponse.ProtoReflect.Descriptor instead.
 func (*OrderHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{8}
+	return file_users_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *OrderHistoryResponse) GetOrders() []*OrderRequest {
+func (x *OrderHistoryResponse) GetResult() isOrderHistoryResponse_Result {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+func (x *OrderHistoryResponse) GetOrderHistoryResponseSuccess() *OrderHistoryResponseSuccess {
+	if x != nil {
+		if x, ok := x.Result.(*OrderHistoryResponse_OrderHistoryResponseSuccess); ok {
+			return x.OrderHistoryResponseSuccess
+		}
+	}
+	return nil
+}
+
+func (x *OrderHistoryResponse) GetError() *Error {
+	if x != nil {
+		if x, ok := x.Result.(*OrderHistoryResponse_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+type isOrderHistoryResponse_Result interface {
+	isOrderHistoryResponse_Result()
+}
+
+type OrderHistoryResponse_OrderHistoryResponseSuccess struct {
+	OrderHistoryResponseSuccess *OrderHistoryResponseSuccess `protobuf:"bytes,1,opt,name=OrderHistoryResponseSuccess,proto3,oneof"`
+}
+
+type OrderHistoryResponse_Error struct {
+	Error *Error `protobuf:"bytes,2,opt,name=error,proto3,oneof"`
+}
+
+func (*OrderHistoryResponse_OrderHistoryResponseSuccess) isOrderHistoryResponse_Result() {}
+
+func (*OrderHistoryResponse_Error) isOrderHistoryResponse_Result() {}
+
+type OrderHistoryResponseSuccess struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Orders        []*OrderResponseSuccess `protobuf:"bytes,1,rep,name=orders,proto3" json:"orders,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrderHistoryResponseSuccess) Reset() {
+	*x = OrderHistoryResponseSuccess{}
+	mi := &file_users_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderHistoryResponseSuccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderHistoryResponseSuccess) ProtoMessage() {}
+
+func (x *OrderHistoryResponseSuccess) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderHistoryResponseSuccess.ProtoReflect.Descriptor instead.
+func (*OrderHistoryResponseSuccess) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *OrderHistoryResponseSuccess) GetOrders() []*OrderResponseSuccess {
 	if x != nil {
 		return x.Orders
 	}
 	return nil
 }
 
-type RateRequest struct {
+type RateByUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	OrderId       string                 `protobuf:"bytes,1,opt,name=OrderId,proto3" json:"OrderId,omitempty"`
+	Comment       string                 `protobuf:"bytes,2,opt,name=Comment,proto3" json:"Comment,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RateRequest) Reset() {
-	*x = RateRequest{}
-	mi := &file_users_proto_msgTypes[9]
+func (x *RateByUserRequest) Reset() {
+	*x = RateByUserRequest{}
+	mi := &file_users_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RateRequest) String() string {
+func (x *RateByUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RateRequest) ProtoMessage() {}
+func (*RateByUserRequest) ProtoMessage() {}
 
-func (x *RateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[9]
+func (x *RateByUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -553,40 +1166,47 @@ func (x *RateRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RateRequest.ProtoReflect.Descriptor instead.
-func (*RateRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{9}
+// Deprecated: Use RateByUserRequest.ProtoReflect.Descriptor instead.
+func (*RateByUserRequest) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *RateRequest) GetUserId() string {
+func (x *RateByUserRequest) GetOrderId() string {
 	if x != nil {
-		return x.UserId
+		return x.OrderId
 	}
 	return ""
 }
 
-type RateResponse struct {
+func (x *RateByUserRequest) GetComment() string {
+	if x != nil {
+		return x.Comment
+	}
+	return ""
+}
+
+type RateByUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Rate          float32                `protobuf:"fixed32,1,opt,name=rate,proto3" json:"rate,omitempty"`
+	Error         *Error                 `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RateResponse) Reset() {
-	*x = RateResponse{}
-	mi := &file_users_proto_msgTypes[10]
+func (x *RateByUserResponse) Reset() {
+	*x = RateByUserResponse{}
+	mi := &file_users_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RateResponse) String() string {
+func (x *RateByUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RateResponse) ProtoMessage() {}
+func (*RateByUserResponse) ProtoMessage() {}
 
-func (x *RateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[10]
+func (x *RateByUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -597,64 +1217,109 @@ func (x *RateResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RateResponse.ProtoReflect.Descriptor instead.
-func (*RateResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{10}
+// Deprecated: Use RateByUserResponse.ProtoReflect.Descriptor instead.
+func (*RateByUserResponse) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *RateResponse) GetRate() float32 {
+func (x *RateByUserResponse) GetError() *Error {
 	if x != nil {
-		return x.Rate
+		return x.Error
 	}
-	return 0
+	return nil
 }
 
 var File_users_proto protoreflect.FileDescriptor
 
 const file_users_proto_rawDesc = "" +
 	"\n" +
-	"\vusers.proto\x12\x05users\",\n" +
-	"\x06Driver\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"(\n" +
-	"\fOrderRequest\x12\x18\n" +
-	"\aorderId\x18\x01 \x01(\tR\aorderId\"\xc6\x01\n" +
-	"\rOrderResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
-	"\x02to\x18\x03 \x01(\tR\x02to\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\x12%\n" +
-	"\x06driver\x18\x05 \x01(\v2\r.users.DriverR\x06driver\x12\x16\n" +
-	"\x06status\x18\x06 \x01(\tR\x06status\x12\x1a\n" +
-	"\buserRate\x18\a \x01(\x02R\buserRate\x12\x12\n" +
-	"\x04cost\x18\b \x01(\x02R\x04cost\"\xa3\x01\n" +
+	"\vusers.proto\x12\x05users\"5\n" +
+	"\x05Error\x12\x12\n" +
+	"\x04code\x18\x01 \x01(\tR\x04code\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\"d\n" +
 	"\x12CreateOrderRequest\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x02 \x01(\tR\x02to\x12\x16\n" +
 	"\x06userId\x18\x03 \x01(\tR\x06userId\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\x12\x1a\n" +
-	"\bdistance\x18\x05 \x01(\x03R\bdistance\x12!\n" +
-	"\fduration_Min\x18\x06 \x01(\x03R\vdurationMin\"%\n" +
-	"\x13CreateOrderResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"$\n" +
-	"\x12CancelOrderRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"%\n" +
-	"\x13CancelOrderResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"-\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"\x92\x01\n" +
+	"\x13CreateOrderResponse\x12K\n" +
+	"\x12SuccessCreateOrder\x18\x01 \x01(\v2\x19.users.SuccessCreateOrderH\x00R\x12SuccessCreateOrder\x12$\n" +
+	"\x05error\x18\x02 \x01(\v2\f.users.ErrorH\x00R\x05errorB\b\n" +
+	"\x06result\"\xb8\x01\n" +
+	"\x12SuccessCreateOrder\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
+	"\x02to\x18\x03 \x01(\tR\x02to\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12\x12\n" +
+	"\x04cost\x18\x05 \x01(\tR\x04cost\x12\x1a\n" +
+	"\bdistance\x18\x06 \x01(\tR\bdistance\x12\x12\n" +
+	"\x04time\x18\a \x01(\tR\x04time\x12\x16\n" +
+	"\x06status\x18\b \x01(\tR\x06status\"\x88\x01\n" +
+	"\x06Driver\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x12$\n" +
+	"\rdriverComment\x18\x04 \x01(\tR\rdriverComment\x12\x1e\n" +
+	"\n" +
+	"DriverRate\x18\x05 \x01(\x02R\n" +
+	"DriverRate\"~\n" +
+	"\x04User\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x12 \n" +
+	"\vuserComment\x18\x04 \x01(\tR\vuserComment\x12\x1a\n" +
+	"\buserRate\x18\x05 \x01(\x02R\buserRate\"N\n" +
+	"\fCancelParams\x12\x1a\n" +
+	"\bcanceled\x18\x01 \x01(\x03R\bcanceled\x12\"\n" +
+	"\fcancelByRole\x18\x02 \x01(\tR\fcancelByRole\"(\n" +
+	"\fOrderRequest\x12\x18\n" +
+	"\aorderId\x18\x01 \x01(\tR\aorderId\"\x8e\x01\n" +
+	"\rOrderResponse\x12M\n" +
+	"\x12SuccessCreateOrder\x18\x01 \x01(\v2\x1b.users.OrderResponseSuccessH\x00R\x12SuccessCreateOrder\x12$\n" +
+	"\x05error\x18\x02 \x01(\v2\f.users.ErrorH\x00R\x05errorB\b\n" +
+	"\x06result\"\xf1\x02\n" +
+	"\x14OrderResponseSuccess\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
+	"\x02to\x18\x03 \x01(\tR\x02to\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12\x12\n" +
+	"\x04cost\x18\x05 \x01(\tR\x04cost\x12\x1a\n" +
+	"\bdistance\x18\x06 \x01(\tR\bdistance\x12\x12\n" +
+	"\x04time\x18\a \x01(\tR\x04time\x12\x16\n" +
+	"\x06status\x18\b \x01(\tR\x06status\x12\x18\n" +
+	"\astarted\x18\t \x01(\x03R\astarted\x12\x1a\n" +
+	"\bfinished\x18\n" +
+	" \x01(\x03R\bfinished\x12\x1f\n" +
+	"\x04user\x18\v \x01(\v2\v.users.UserR\x04user\x12%\n" +
+	"\x06driver\x18\f \x01(\v2\r.users.DriverR\x06driver\x127\n" +
+	"\fCancelParams\x18\r \x01(\v2\x13.users.CancelParamsR\fCancelParams\".\n" +
+	"\x12CancelOrderRequest\x12\x18\n" +
+	"\aorderId\x18\x01 \x01(\tR\aorderId\"\xaa\x01\n" +
+	"\x13CancelOrderResponse\x12c\n" +
+	"\x1aCancelOrderResponseSuccess\x18\x01 \x01(\v2!.users.CancelOrderResponseSuccessH\x00R\x1aCancelOrderResponseSuccess\x12$\n" +
+	"\x05error\x18\x02 \x01(\v2\f.users.ErrorH\x00R\x05errorB\b\n" +
+	"\x06result\"8\n" +
+	"\x1aCancelOrderResponseSuccess\x12\x1a\n" +
+	"\bcanceled\x18\x01 \x01(\x03R\bcanceled\"-\n" +
 	"\x13OrderHistoryRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\"C\n" +
-	"\x14OrderHistoryResponse\x12+\n" +
-	"\x06orders\x18\x01 \x03(\v2\x13.users.OrderRequestR\x06orders\"%\n" +
-	"\vRateRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\"\"\n" +
-	"\fRateResponse\x12\x12\n" +
-	"\x04rate\x18\x01 \x01(\x02R\x04rate2\xd0\x02\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\"\xae\x01\n" +
+	"\x14OrderHistoryResponse\x12f\n" +
+	"\x1bOrderHistoryResponseSuccess\x18\x01 \x01(\v2\".users.OrderHistoryResponseSuccessH\x00R\x1bOrderHistoryResponseSuccess\x12$\n" +
+	"\x05error\x18\x02 \x01(\v2\f.users.ErrorH\x00R\x05errorB\b\n" +
+	"\x06result\"R\n" +
+	"\x1bOrderHistoryResponseSuccess\x123\n" +
+	"\x06orders\x18\x01 \x03(\v2\x1b.users.OrderResponseSuccessR\x06orders\"G\n" +
+	"\x11RateByUserRequest\x12\x18\n" +
+	"\aOrderId\x18\x01 \x01(\tR\aOrderId\x12\x18\n" +
+	"\aComment\x18\x02 \x01(\tR\aComment\"8\n" +
+	"\x12RateByUserResponse\x12\"\n" +
+	"\x05error\x18\x02 \x01(\v2\f.users.ErrorR\x05error2\xdc\x02\n" +
 	"\x14UsersOrderManagement\x12D\n" +
-	"\vCreateOrder\x12\x19.users.CreateOrderRequest\x1a\x1a.users.CreateOrderResponse\x122\n" +
+	"\vCreateOrder\x12\x19.users.CancelOrderRequest\x1a\x1a.users.CreateOrderResponse\x122\n" +
 	"\x05Order\x12\x13.users.OrderRequest\x1a\x14.users.OrderResponse\x12D\n" +
 	"\vCancelOrder\x12\x19.users.CancelOrderRequest\x1a\x1a.users.CancelOrderResponse\x12G\n" +
-	"\fOrderHistory\x12\x1a.users.OrderHistoryRequest\x1a\x1b.users.OrderHistoryResponse\x12/\n" +
-	"\x04Rate\x12\x12.users.RateRequest\x1a\x13.users.RateResponseB3Z1github.com/anivanovle/users_proto/gen/users;usersb\x06proto3"
+	"\fOrderHistory\x12\x1a.users.OrderHistoryRequest\x1a\x1b.users.OrderHistoryResponse\x12;\n" +
+	"\x04Rate\x12\x18.users.RateByUserRequest\x1a\x19.users.RateByUserResponseB3Z1github.com/anivanovle/users_proto/gen/users;usersb\x06proto3"
 
 var (
 	file_users_proto_rawDescOnce sync.Once
@@ -668,38 +1333,56 @@ func file_users_proto_rawDescGZIP() []byte {
 	return file_users_proto_rawDescData
 }
 
-var file_users_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_users_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_users_proto_goTypes = []any{
-	(*Driver)(nil),               // 0: users.Driver
-	(*OrderRequest)(nil),         // 1: users.OrderRequest
-	(*OrderResponse)(nil),        // 2: users.OrderResponse
-	(*CreateOrderRequest)(nil),   // 3: users.CreateOrderRequest
-	(*CreateOrderResponse)(nil),  // 4: users.CreateOrderResponse
-	(*CancelOrderRequest)(nil),   // 5: users.CancelOrderRequest
-	(*CancelOrderResponse)(nil),  // 6: users.CancelOrderResponse
-	(*OrderHistoryRequest)(nil),  // 7: users.OrderHistoryRequest
-	(*OrderHistoryResponse)(nil), // 8: users.OrderHistoryResponse
-	(*RateRequest)(nil),          // 9: users.RateRequest
-	(*RateResponse)(nil),         // 10: users.RateResponse
+	(*Error)(nil),                       // 0: users.Error
+	(*CreateOrderRequest)(nil),          // 1: users.CreateOrderRequest
+	(*CreateOrderResponse)(nil),         // 2: users.CreateOrderResponse
+	(*SuccessCreateOrder)(nil),          // 3: users.SuccessCreateOrder
+	(*Driver)(nil),                      // 4: users.Driver
+	(*User)(nil),                        // 5: users.User
+	(*CancelParams)(nil),                // 6: users.CancelParams
+	(*OrderRequest)(nil),                // 7: users.OrderRequest
+	(*OrderResponse)(nil),               // 8: users.OrderResponse
+	(*OrderResponseSuccess)(nil),        // 9: users.OrderResponseSuccess
+	(*CancelOrderRequest)(nil),          // 10: users.CancelOrderRequest
+	(*CancelOrderResponse)(nil),         // 11: users.CancelOrderResponse
+	(*CancelOrderResponseSuccess)(nil),  // 12: users.CancelOrderResponseSuccess
+	(*OrderHistoryRequest)(nil),         // 13: users.OrderHistoryRequest
+	(*OrderHistoryResponse)(nil),        // 14: users.OrderHistoryResponse
+	(*OrderHistoryResponseSuccess)(nil), // 15: users.OrderHistoryResponseSuccess
+	(*RateByUserRequest)(nil),           // 16: users.RateByUserRequest
+	(*RateByUserResponse)(nil),          // 17: users.RateByUserResponse
 }
 var file_users_proto_depIdxs = []int32{
-	0,  // 0: users.OrderResponse.driver:type_name -> users.Driver
-	1,  // 1: users.OrderHistoryResponse.orders:type_name -> users.OrderRequest
-	3,  // 2: users.UsersOrderManagement.CreateOrder:input_type -> users.CreateOrderRequest
-	1,  // 3: users.UsersOrderManagement.Order:input_type -> users.OrderRequest
-	5,  // 4: users.UsersOrderManagement.CancelOrder:input_type -> users.CancelOrderRequest
-	7,  // 5: users.UsersOrderManagement.OrderHistory:input_type -> users.OrderHistoryRequest
-	9,  // 6: users.UsersOrderManagement.Rate:input_type -> users.RateRequest
-	4,  // 7: users.UsersOrderManagement.CreateOrder:output_type -> users.CreateOrderResponse
-	2,  // 8: users.UsersOrderManagement.Order:output_type -> users.OrderResponse
-	6,  // 9: users.UsersOrderManagement.CancelOrder:output_type -> users.CancelOrderResponse
-	8,  // 10: users.UsersOrderManagement.OrderHistory:output_type -> users.OrderHistoryResponse
-	10, // 11: users.UsersOrderManagement.Rate:output_type -> users.RateResponse
-	7,  // [7:12] is the sub-list for method output_type
-	2,  // [2:7] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	3,  // 0: users.CreateOrderResponse.SuccessCreateOrder:type_name -> users.SuccessCreateOrder
+	0,  // 1: users.CreateOrderResponse.error:type_name -> users.Error
+	9,  // 2: users.OrderResponse.SuccessCreateOrder:type_name -> users.OrderResponseSuccess
+	0,  // 3: users.OrderResponse.error:type_name -> users.Error
+	5,  // 4: users.OrderResponseSuccess.user:type_name -> users.User
+	4,  // 5: users.OrderResponseSuccess.driver:type_name -> users.Driver
+	6,  // 6: users.OrderResponseSuccess.CancelParams:type_name -> users.CancelParams
+	12, // 7: users.CancelOrderResponse.CancelOrderResponseSuccess:type_name -> users.CancelOrderResponseSuccess
+	0,  // 8: users.CancelOrderResponse.error:type_name -> users.Error
+	15, // 9: users.OrderHistoryResponse.OrderHistoryResponseSuccess:type_name -> users.OrderHistoryResponseSuccess
+	0,  // 10: users.OrderHistoryResponse.error:type_name -> users.Error
+	9,  // 11: users.OrderHistoryResponseSuccess.orders:type_name -> users.OrderResponseSuccess
+	0,  // 12: users.RateByUserResponse.error:type_name -> users.Error
+	10, // 13: users.UsersOrderManagement.CreateOrder:input_type -> users.CancelOrderRequest
+	7,  // 14: users.UsersOrderManagement.Order:input_type -> users.OrderRequest
+	10, // 15: users.UsersOrderManagement.CancelOrder:input_type -> users.CancelOrderRequest
+	13, // 16: users.UsersOrderManagement.OrderHistory:input_type -> users.OrderHistoryRequest
+	16, // 17: users.UsersOrderManagement.Rate:input_type -> users.RateByUserRequest
+	2,  // 18: users.UsersOrderManagement.CreateOrder:output_type -> users.CreateOrderResponse
+	8,  // 19: users.UsersOrderManagement.Order:output_type -> users.OrderResponse
+	11, // 20: users.UsersOrderManagement.CancelOrder:output_type -> users.CancelOrderResponse
+	14, // 21: users.UsersOrderManagement.OrderHistory:output_type -> users.OrderHistoryResponse
+	17, // 22: users.UsersOrderManagement.Rate:output_type -> users.RateByUserResponse
+	18, // [18:23] is the sub-list for method output_type
+	13, // [13:18] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_users_proto_init() }
@@ -707,13 +1390,29 @@ func file_users_proto_init() {
 	if File_users_proto != nil {
 		return
 	}
+	file_users_proto_msgTypes[2].OneofWrappers = []any{
+		(*CreateOrderResponse_SuccessCreateOrder)(nil),
+		(*CreateOrderResponse_Error)(nil),
+	}
+	file_users_proto_msgTypes[8].OneofWrappers = []any{
+		(*OrderResponse_SuccessCreateOrder)(nil),
+		(*OrderResponse_Error)(nil),
+	}
+	file_users_proto_msgTypes[11].OneofWrappers = []any{
+		(*CancelOrderResponse_CancelOrderResponseSuccess)(nil),
+		(*CancelOrderResponse_Error)(nil),
+	}
+	file_users_proto_msgTypes[14].OneofWrappers = []any{
+		(*OrderHistoryResponse_OrderHistoryResponseSuccess)(nil),
+		(*OrderHistoryResponse_Error)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_proto_rawDesc), len(file_users_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

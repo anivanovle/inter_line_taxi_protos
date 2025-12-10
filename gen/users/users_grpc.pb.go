@@ -30,11 +30,11 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UsersOrderManagementClient interface {
-	CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
+	CreateOrder(ctx context.Context, in *CancelOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
 	Order(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*OrderResponse, error)
 	CancelOrder(ctx context.Context, in *CancelOrderRequest, opts ...grpc.CallOption) (*CancelOrderResponse, error)
 	OrderHistory(ctx context.Context, in *OrderHistoryRequest, opts ...grpc.CallOption) (*OrderHistoryResponse, error)
-	Rate(ctx context.Context, in *RateRequest, opts ...grpc.CallOption) (*RateResponse, error)
+	Rate(ctx context.Context, in *RateByUserRequest, opts ...grpc.CallOption) (*RateByUserResponse, error)
 }
 
 type usersOrderManagementClient struct {
@@ -45,7 +45,7 @@ func NewUsersOrderManagementClient(cc grpc.ClientConnInterface) UsersOrderManage
 	return &usersOrderManagementClient{cc}
 }
 
-func (c *usersOrderManagementClient) CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error) {
+func (c *usersOrderManagementClient) CreateOrder(ctx context.Context, in *CancelOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateOrderResponse)
 	err := c.cc.Invoke(ctx, UsersOrderManagement_CreateOrder_FullMethodName, in, out, cOpts...)
@@ -85,9 +85,9 @@ func (c *usersOrderManagementClient) OrderHistory(ctx context.Context, in *Order
 	return out, nil
 }
 
-func (c *usersOrderManagementClient) Rate(ctx context.Context, in *RateRequest, opts ...grpc.CallOption) (*RateResponse, error) {
+func (c *usersOrderManagementClient) Rate(ctx context.Context, in *RateByUserRequest, opts ...grpc.CallOption) (*RateByUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RateResponse)
+	out := new(RateByUserResponse)
 	err := c.cc.Invoke(ctx, UsersOrderManagement_Rate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -99,11 +99,11 @@ func (c *usersOrderManagementClient) Rate(ctx context.Context, in *RateRequest, 
 // All implementations must embed UnimplementedUsersOrderManagementServer
 // for forward compatibility.
 type UsersOrderManagementServer interface {
-	CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
+	CreateOrder(context.Context, *CancelOrderRequest) (*CreateOrderResponse, error)
 	Order(context.Context, *OrderRequest) (*OrderResponse, error)
 	CancelOrder(context.Context, *CancelOrderRequest) (*CancelOrderResponse, error)
 	OrderHistory(context.Context, *OrderHistoryRequest) (*OrderHistoryResponse, error)
-	Rate(context.Context, *RateRequest) (*RateResponse, error)
+	Rate(context.Context, *RateByUserRequest) (*RateByUserResponse, error)
 	mustEmbedUnimplementedUsersOrderManagementServer()
 }
 
@@ -114,7 +114,7 @@ type UsersOrderManagementServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUsersOrderManagementServer struct{}
 
-func (UnimplementedUsersOrderManagementServer) CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error) {
+func (UnimplementedUsersOrderManagementServer) CreateOrder(context.Context, *CancelOrderRequest) (*CreateOrderResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateOrder not implemented")
 }
 func (UnimplementedUsersOrderManagementServer) Order(context.Context, *OrderRequest) (*OrderResponse, error) {
@@ -126,7 +126,7 @@ func (UnimplementedUsersOrderManagementServer) CancelOrder(context.Context, *Can
 func (UnimplementedUsersOrderManagementServer) OrderHistory(context.Context, *OrderHistoryRequest) (*OrderHistoryResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method OrderHistory not implemented")
 }
-func (UnimplementedUsersOrderManagementServer) Rate(context.Context, *RateRequest) (*RateResponse, error) {
+func (UnimplementedUsersOrderManagementServer) Rate(context.Context, *RateByUserRequest) (*RateByUserResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Rate not implemented")
 }
 func (UnimplementedUsersOrderManagementServer) mustEmbedUnimplementedUsersOrderManagementServer() {}
@@ -151,7 +151,7 @@ func RegisterUsersOrderManagementServer(s grpc.ServiceRegistrar, srv UsersOrderM
 }
 
 func _UsersOrderManagement_CreateOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateOrderRequest)
+	in := new(CancelOrderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -163,7 +163,7 @@ func _UsersOrderManagement_CreateOrder_Handler(srv interface{}, ctx context.Cont
 		FullMethod: UsersOrderManagement_CreateOrder_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersOrderManagementServer).CreateOrder(ctx, req.(*CreateOrderRequest))
+		return srv.(UsersOrderManagementServer).CreateOrder(ctx, req.(*CancelOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -223,7 +223,7 @@ func _UsersOrderManagement_OrderHistory_Handler(srv interface{}, ctx context.Con
 }
 
 func _UsersOrderManagement_Rate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RateRequest)
+	in := new(RateByUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -235,7 +235,7 @@ func _UsersOrderManagement_Rate_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: UsersOrderManagement_Rate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersOrderManagementServer).Rate(ctx, req.(*RateRequest))
+		return srv.(UsersOrderManagementServer).Rate(ctx, req.(*RateByUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
