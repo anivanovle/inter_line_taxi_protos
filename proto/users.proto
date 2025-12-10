@@ -40,7 +40,7 @@ message CreateOrderRequest{
     string userId = 3;
     string type = 4;
     int64 distance = 5;
-    int64 duration_Mn = 6; // время в минутах
+    int64 duration_Min = 6; // время в минутах
 
 }
 
