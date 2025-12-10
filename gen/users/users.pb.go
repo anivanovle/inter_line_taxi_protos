@@ -223,6 +223,8 @@ type CreateOrderRequest struct {
 	To            string                 `protobuf:"bytes,2,opt,name=to,proto3" json:"to,omitempty"`
 	UserId        string                 `protobuf:"bytes,3,opt,name=userId,proto3" json:"userId,omitempty"`
 	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	Distance      int64                  `protobuf:"varint,5,opt,name=distance,proto3" json:"distance,omitempty"`
+	DurationMs    int64                  `protobuf:"varint,6,opt,name=duration_ms,json=durationMs,proto3" json:"duration_ms,omitempty"` // время в миллисекундах
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -283,6 +285,20 @@ func (x *CreateOrderRequest) GetType() string {
 		return x.Type
 	}
 	return ""
+}
+
+func (x *CreateOrderRequest) GetDistance() int64 {
+	if x != nil {
+		return x.Distance
+	}
+	return 0
+}
+
+func (x *CreateOrderRequest) GetDurationMs() int64 {
+	if x != nil {
+		return x.DurationMs
+	}
+	return 0
 }
 
 type CreateOrderResponse struct {
@@ -611,12 +627,15 @@ const file_users_proto_rawDesc = "" +
 	"\x06driver\x18\x05 \x01(\v2\r.users.DriverR\x06driver\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12\x1a\n" +
 	"\buserRate\x18\a \x01(\x02R\buserRate\x12\x12\n" +
-	"\x04cost\x18\b \x01(\x02R\x04cost\"d\n" +
+	"\x04cost\x18\b \x01(\x02R\x04cost\"\xa1\x01\n" +
 	"\x12CreateOrderRequest\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x02 \x01(\tR\x02to\x12\x16\n" +
 	"\x06userId\x18\x03 \x01(\tR\x06userId\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\"%\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12\x1a\n" +
+	"\bdistance\x18\x05 \x01(\x03R\bdistance\x12\x1f\n" +
+	"\vduration_ms\x18\x06 \x01(\x03R\n" +
+	"durationMs\"%\n" +
 	"\x13CreateOrderResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"$\n" +
 	"\x12CancelOrderRequest\x12\x0e\n" +
